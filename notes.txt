@@ -1,23 +1,24 @@
-1. Create a react app from scratch or use vite.js  +++
+(1.) Create a react app from scratch or use vite.js  +++
 (configure webpack, eslint and prettier and etc.) (from scratch will be counted as bonus points)
 
-2. Create a user interface with home, about and users page
+(2.) Create a user interface with home, about and users page +++
 
 3. Create an api for Users data, including firstname, lastname, birthdate, email 
 (these field should be validated in both client and server side)
 
 4. A database should be used to store users data (postgresql, sqlite, mysql, mongodb)
 
-5. Create users table in users page using chakra ui.
+(5.) Create users table in users page using chakra ui. +++
 
 6. Create Add user, Delete user, Edit user pages as different pages. Those pages should be implemented with Chakra ui library too.
 
-7. User interfaces should be mobile friendly as much as possible
+(7.) User interfaces should be mobile friendly as much as possible
 
 8. When creating this app following libraries should be addressed accordingly:
 react-hook-form | formik
-chakra-ui, 
-react-router-dom
+chakra-ui,  +++
+react-router-dom +++
 yup
 express.js
+
 9. Deploying this app will count as bonus points too
