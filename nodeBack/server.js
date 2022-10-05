@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const { body, validationResult } = require('express-validator');
 const cors = require('cors');
 
+app.use(cors());
 
 app.use(bodyParser.json())
 mongoose.connect("mongodb+srv://elnurxo:Starboystar1@products.lhifuq4.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true });
