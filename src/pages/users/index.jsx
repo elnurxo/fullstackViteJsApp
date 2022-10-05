@@ -1,54 +1,85 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
   TableCaption,
   TableContainer,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import { getUsers } from "../../utils/axiosData";
 
 function Users() {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const getAndSetUsers = async () => {
+      try {
+        setLoading(true);
+        const getUserResponse = await getUsers();
+        if (getUserResponse.status === 200) {
+          setUsers(getUserResponse.data);
+        } else {
+          navigate("/not-found");
+          setUsers([]);
+        }
+        setLoading(false);
+      } catch (err) {
+        setUsers([]);
+        navigate("/not-found");
+      }
+    };
+    getAndSetUsers();
+  }, [navigate]);
+
+  // const getAndSetUsers = async () => {
+  //   try {
+  //     setLoading(true);
+  //     const getUserResponse = await getUsers();
+  //     if (getUserResponse.status === 200) {
+  //       setUsers(getUserResponse.data);
+  //     } else {
+  //       navigate("/not-found");
+  //       setUsers([]);
+  //     }
+  //     setLoading(false);
+  //   } catch (err) {
+  //     setUsers([]);
+  //     navigate("/not-found");
+  //   }
+  // };
   return (
     <>
       <div className="container">
         <TableContainer>
           <Table variant="simple">
-            <TableCaption>Imperial to metric conversion factors</TableCaption>
+            <TableCaption>User Data Table</TableCaption>
             <Thead>
               <Tr>
-                <Th>To convert</Th>
-                <Th>into</Th>
-                <Th isNumeric>multiply by</Th>
+                <Th>User Name</Th>
+                <Th>User Birth Date</Th>
+                <Th isNumeric>User Email</Th>
               </Tr>
             </Thead>
             <Tbody>
-              <Tr>
-                <Td>inches</Td>
-                <Td>millimetres (mm)</Td>
-                <Td isNumeric>25.4</Td>
-              </Tr>
-              <Tr>
-                <Td>feet</Td>
-                <Td>centimetres (cm)</Td>
-                <Td isNumeric>30.48</Td>
-              </Tr>
-              <Tr>
-                <Td>yards</Td>
-                <Td>metres (m)</Td>
-                <Td isNumeric>0.91444</Td>
-              </Tr>
+              {
+                users.map((user)=>{
+                  return(
+                    <Tr>
+                    <Td>{user?.firstname} {user?.lastname}</Td>
+                    <Td>{user?.lastname} (mm)</Td>
+                    <Td isNumeric>{user?.email}</Td>
+                  </Tr>
+                  )
+                })
+              }
+            
             </Tbody>
-            <Tfoot>
-              <Tr>
-                <Th>To convert</Th>
-                <Th>into</Th>
-                <Th isNumeric>multiply by</Th>
-              </Tr>
-            </Tfoot>
           </Table>
         </TableContainer>
       </div>

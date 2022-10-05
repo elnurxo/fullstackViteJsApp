@@ -4,6 +4,7 @@ const { Schema } = mongoose;
 const app = express();
 const bodyParser = require('body-parser');
 const { body, validationResult } = require('express-validator');
+const cors = require('cors');
 
 
 app.use(bodyParser.json())
