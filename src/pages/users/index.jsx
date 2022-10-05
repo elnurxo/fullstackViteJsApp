@@ -72,7 +72,7 @@ function Users() {
                   return(
                     <Tr>
                     <Td>{user?.firstname} {user?.lastname}</Td>
-                    <Td>{user?.lastname}</Td>
+                    <Td>{user?.birthdate}</Td>
                     <Td isNumeric>{user?.email}</Td>
                   </Tr>
                   )
