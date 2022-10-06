@@ -10,7 +10,6 @@ import {
     MenuList,
     MenuItem,
     MenuDivider,
-    useDisclosure,
     useColorModeValue,
     Stack,
     useColorMode,
@@ -19,9 +18,8 @@ import {
   import { MoonIcon, SunIcon } from '@chakra-ui/icons';
   import profileImage from '../assets/pp.jpg'
 
-function Header() {
+export function Header() {
     const { colorMode, toggleColorMode } = useColorMode();
-    const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>

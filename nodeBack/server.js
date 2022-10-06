@@ -1,5 +1,5 @@
 const express = require("express");
-const mongoose = require("mongoose");
+const mongoose =require("mongoose");
 const { Schema } = mongoose;
 const app = express();
 const bodyParser = require('body-parser');
@@ -20,7 +20,7 @@ const userSchema = new Schema({
 },
 {
     timestamps: true,
-    versionKey: false, // Here You have to add.
+    versionKey: false,
 })
 
 const User = mongoose.model('User', userSchema);
@@ -70,7 +70,7 @@ app.put('/users/:id', (req, res) => {
 
     let id = req.params.id;
 
-    Product.findByIdAndUpdate(id, req.body, (err, doc) => {
+    userSchema.findByIdAndUpdate(id, req.body, (err) => {
         if (!err) {
             res.json({ 'message': 'success' });
         }

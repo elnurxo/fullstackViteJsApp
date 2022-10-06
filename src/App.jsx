@@ -1,9 +1,9 @@
-import "./App.css";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home";
 import About from "./pages/about";
 import Users from "./pages/users";
-import Header from "./components/Header";
+import { Header } from "./components/Header";
 
 function App() {
   return (
@@ -14,7 +14,8 @@ function App() {
         <Route  path="/about" element={<About />} />
         <Route path="/users" element={<Users />} />
       </Routes>
-    </div>
+    </div> 
+    
   );
 }
 
